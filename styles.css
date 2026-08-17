@@ -203,15 +203,25 @@ h2 span { color: #438b80; }
 .split-heading h2 { margin-bottom:0; }
 .split-heading p { font-size:17px; color:#53605d; line-height:1.8; margin-bottom:4px; }
 .feature-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:70px; }
-.feature-card { min-height:315px; padding:28px; border:1px solid var(--line); border-radius:18px; background:#f8faf6; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+.feature-card { min-height:315px; padding:28px; border:1px solid var(--line); border-radius:18px; background:#f8faf6; display:flex; flex-direction:column; position:relative; overflow:hidden; transition:transform .2s ease, box-shadow .2s ease; }
 .feature-card::before { content:""; width:92px; height:92px; border:1px solid rgba(10,36,31,.06); border-radius:50%; position:absolute; right:-22px; top:-22px; }
+.feature-card.feature-physics { background:linear-gradient(145deg,#f2fbf8,#e8f6f1); border-color:#cfe6df; }
+.feature-card.feature-data { background:linear-gradient(145deg,#f1fafc,#e4f4f6); border-color:#cae3e7; }
+.feature-card.feature-ml { background:linear-gradient(145deg,#f8fbe9,#eef5d4); border-color:#dbe5b8; }
+.feature-card.feature-physics .feature-number, .feature-card.feature-physics .micro-tag { color:#2c7d73; }
+.feature-card.feature-data .feature-number, .feature-card.feature-data .micro-tag { color:#2d7680; }
+.feature-card.feature-ml .feature-number, .feature-card.feature-ml .micro-tag { color:#5d7d21; }
+.feature-card.feature-physics .micro-tag { border-color:#bcd9d1; }
+.feature-card.feature-data .micro-tag { border-color:#b9dce1; }
+.feature-card.feature-ml .micro-tag { border-color:#cfdda1; }
 .feature-card.featured { background:var(--ink-2); color:var(--white); border-color:transparent; }
 .feature-card.featured::after { content:""; position:absolute; width:150px; height:150px; right:-70px; bottom:-70px; background:radial-gradient(circle,var(--teal),transparent 65%); opacity:.18; }
 .feature-number { color:#84938f; font-size:10px; font-weight:800; letter-spacing:.12em; margin-bottom:auto; }
 .feature-card h3 { font-size:22px; line-height:1.05; letter-spacing:-.03em; margin:32px 0 12px; }
 .feature-card p { color:#65716e; font-size:13px; }
 .featured p { color:#98aaa5; }
-.micro-tag { margin-top:auto; align-self:flex-start; font-size:9px; letter-spacing:.13em; font-weight:900; padding:6px 9px; border:1px solid var(--line); border-radius:999px; }
+.micro-tag { margin-top:auto; align-self:flex-start; font-size:9px; line-height:1.35; letter-spacing:.11em; font-weight:900; padding:6px 9px; border:1px solid var(--line); border-radius:999px; }
+.micro-tag-wide { max-width:100%; border-radius:12px; }
 .featured .micro-tag { color:var(--lime); border-color:rgba(184,240,74,.22); }
 
 .challenge-layout { display:grid; grid-template-columns:.8fr 1.2fr; gap:82px; align-items:center; }
