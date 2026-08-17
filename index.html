@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ML4ChemE — Machine Learning Meets Chemical Process Simulation. Build a hybrid DWSIM + ML chemical process simulator." />
+  <title>ML4ChemE | Machine Learning Meets Chemical Process Simulation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <div class="partner-logos" aria-label="Organisers and platform partners">
+        <a class="partner-logo iitb-logo" href="https://www.iitb.ac.in/" target="_blank" rel="noopener" aria-label="IIT Bombay">
+          <img src="assets/iitbombay-logo.png" alt="IIT Bombay logo" />
+        </a>
+        <a class="partner-logo fossee-logo" href="https://fossee.in/" target="_blank" rel="noopener" aria-label="FOSSEE">
+          <img src="assets/fossee-logo.png" alt="FOSSEE logo" />
+        </a>
+        <a class="partner-logo dwsim-logo" href="https://dwsim.org/" target="_blank" rel="noopener" aria-label="DWSIM">
+          <img src="assets/dwsim-logo.png" alt="DWSIM logo" />
+        </a>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#challenge">Challenge</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#register">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-dark">
+      <div class="hero-grid container">
+        <div class="hero-copy reveal">
+          <div class="hero-presenter">FOSSEE, IIT Bombay presents</div>
+          <div class="eyebrow"><span class="pulse-dot"></span> A Chemical Engineering + AI Hackathon</div>
+          <h1>
+            <span class="hero-kicker">ML4ChemE</span>
+            <span class="hero-title-secondary">Machine Learning Meets<br />
+            <span class="gradient-text">Chemical Process Simulation</span></span>
+          </h1>
+          <p class="hero-tagline">Simulate smarter. Predict faster.</p>
+          <p class="hero-intro">
+            Build a rigorous chemical process in DWSIM, generate process data, replace one key unit operation with a machine-learning model, and integrate it back into the flowsheet to create a true hybrid simulator.
+          </p>
+          <div class="hero-actions">
+            <a href="#challenge" class="btn btn-primary">Explore the Challenge <span>↗</span></a>
+            <a href="#workflow" class="btn btn-ghost">See How It Works</a>
+          </div>
+          <div class="hero-meta">
+            <div><span class="meta-label">MODE</span><strong>Online / Hybrid</strong></div>
+            <div><span class="meta-label">REGISTRATION</span><strong>Opening Soon</strong></div>
+            <div><span class="meta-label">TEAM SIZE</span><strong>To be announced</strong></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Hybrid chemical process simulation illustration">
+          <div class="orb orb-a"></div>
+          <div class="orb orb-b"></div>
+          <div class="process-canvas">
+            <div class="canvas-topline">
+              <span>HYBRID FLOWSHEET</span>
+              <span class="status"><i></i> LIVE</span>
+            </div>
+
+            <div class="canvas-section-title">FULL DWSIM PROCESS</div>
+            <div class="pipeline-stage rigorous-stage">
+              <div class="unit-card dwsim-unit">
+                <div class="unit-icon hex">HX</div>
+                <span>Heat Exchanger</span>
+                <small>DWSIM</small>
+              </div>
+              <div class="pipe"><span></span></div>
+              <div class="unit-card dwsim-unit">
+                <div class="unit-icon reactor">R</div>
+                <span>PFR / CSTR</span>
+                <small>DWSIM</small>
+              </div>
+              <div class="pipe"><span></span></div>
+              <div class="unit-card dwsim-unit">
+                <div class="unit-icon tower">DC</div>
+                <span>Distillation / Absorption</span>
+                <small>DWSIM</small>
+              </div>
+            </div>
+
+            <div class="swap-band">
+              <div class="swap-marker">ML</div>
+              <div class="swap-copy">
+                <strong>Replace one eligible unit with an ML model</strong>
+                <small>Choose any one: PFR / CSTR • Distillation • Absorption</small>
+              </div>
+            </div>
+
+            <div class="canvas-section-title">HYBRID PROCESS</div>
+            <div class="pipeline-stage hybrid-stage">
+              <div class="unit-card dwsim-unit">
+                <div class="unit-icon stack">UP</div>
+                <span>Upstream Unit(s)</span>
+                <small>DWSIM</small>
+              </div>
+              <div class="pipe"><span></span></div>
+              <div class="unit-card ml-unit selected-unit-card">
+                <div class="ml-chip">
+                  <span class="chip-dot"></span><span class="chip-dot"></span><span class="chip-dot"></span>
+                  <strong>ML</strong>
+                  <span class="chip-dot"></span><span class="chip-dot"></span><span class="chip-dot"></span>
+                </div>
+                <span>Selected Unit</span>
+                <small>PFR / CSTR or Distillation / Absorption</small>
+              </div>
+              <div class="pipe"><span></span></div>
+              <div class="unit-card dwsim-unit">
+                <div class="unit-icon stack">DN</div>
+                <span>Downstream Unit(s)</span>
+                <small>DWSIM</small>
+              </div>
+            </div>
+
+            <div class="data-strip">
+              <div><span>ML ROLE</span><strong>ONE UNIT ONLY</strong></div>
+              <div><span>REST OF FLOWSHEET</span><strong>DWSIM</strong></div>
+              <div><span>MODEL TYPE</span><strong>HYBRID</strong></div>
+            </div>
+
+            <svg class="signal-graph" viewBox="0 0 520 115" role="img" aria-label="Prediction signal graph">
+              <defs>
+                <linearGradient id="graphGradient" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#5DE7D7"/>
+                  <stop offset="100%" stop-color="#B8F04A"/>
+                </linearGradient>
+              </defs>
+              <path class="grid-line" d="M0 25 H520 M0 58 H520 M0 91 H520" />
+              <path class="prediction-line" d="M4 82 C45 78, 60 36, 101 44 S156 99, 196 74 S246 22, 286 43 S339 86, 382 61 S439 31, 516 42" />
+              <circle cx="516" cy="42" r="5" fill="#B8F04A"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>DWSIM</span><i>•</i><span>PROCESS SIMULATION</span><i>•</i><span>MACHINE LEARNING</span><i>•</i><span>HYBRID MODELLING</span><i>•</i><span>CHEMICAL ENGINEERING</span><i>•</i>
+          <span>DWSIM</span><i>•</i><span>PROCESS SIMULATION</span><i>•</i><span>MACHINE LEARNING</span><i>•</i><span>HYBRID MODELLING</span><i>•</i><span>CHEMICAL ENGINEERING</span><i>•</i>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="about">
+      <div class="container split-heading reveal">
+        <div>
+          <div class="section-label">01 / ABOUT</div>
+          <h2>Not just an ML model.<br /><span>A working hybrid process simulator.</span></h2>
+        </div>
+        <p>
+          ML4ChemE challenges participants to combine first-principles chemical process simulation with data-driven modelling. Start with a fully rigorous DWSIM flowsheet, learn the behaviour of one unit operation from generated simulation data, and then replace that unit with an ML model while the rest of the process continues to run in DWSIM.
+        </p>
+      </div>
+
+      <div class="container feature-grid reveal">
+        <article class="feature-card">
+          <div class="feature-number">01</div>
+          <h3>Model the physics</h3>
+          <p>Build a chemically meaningful flowsheet with appropriate compounds, thermodynamics and operating conditions.</p>
+          <span class="micro-tag">DWSIM</span>
+        </article>
+        <article class="feature-card">
+          <div class="feature-number">02</div>
+          <h3>Generate the data</h3>
+          <p>Explore realistic operating ranges and create a robust simulation-generated dataset for ML training.</p>
+          <span class="micro-tag">DATA</span>
+        </article>
+        <article class="feature-card">
+          <div class="feature-number">03</div>
+          <h3>Learn one unit</h3>
+          <p>Train an ML model to reproduce the input-output behaviour of one selected process unit.</p>
+          <span class="micro-tag">ML</span>
+        </article>
+        <article class="feature-card featured">
+          <div class="feature-number">04</div>
+          <h3>Close the loop</h3>
+          <p>Reconnect the ML unit to the remaining rigorous DWSIM flowsheet and prove that the hybrid model works.</p>
+          <span class="micro-tag">HYBRID</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-ink" id="challenge">
+      <div class="container challenge-layout">
+        <div class="challenge-copy reveal">
+          <div class="section-label light">02 / THE CHALLENGE</div>
+          <h2>Build the full process.<br />Then teach <span>one unit</span> to think faster.</h2>
+          <p>
+            Every team begins with a complete DWSIM process. The final submission must remain a functioning flowsheet, except one eligible unit operation is replaced by a trained machine-learning model.
+          </p>
+          <div class="challenge-rule">
+            <span class="rule-icon">→</span>
+            <div>
+              <strong>Core requirement</strong>
+              <p>The ML model must receive relevant process inputs and return outputs required by downstream DWSIM units.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hybrid-map reveal">
+          <div class="flow-node">
+            <span class="node-num">01</span>
+            <strong>Feed + HX</strong>
+            <small>DWSIM</small>
+          </div>
+          <div class="flow-link"><span></span><b>process stream</b></div>
+          <div class="flow-node selected">
+            <span class="node-num">02</span>
+            <strong>Selected Unit</strong>
+            <small>ML MODEL</small>
+            <em>REPLACED</em>
+          </div>
+          <div class="flow-link"><span></span><b>predicted stream</b></div>
+          <div class="flow-node">
+            <span class="node-num">03</span>
+            <strong>Separation</strong>
+            <small>DWSIM</small>
+          </div>
+          <div class="flow-link"><span></span><b>product stream</b></div>
+          <div class="flow-node output">
+            <span class="node-num">04</span>
+            <strong>Product</strong>
+            <small>VALIDATE</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="container eligible-wrap reveal">
+        <div class="eligible-heading">
+          <span>Eligible units for ML replacement</span>
+          <small>Choose any one</small>
+        </div>
+        <div class="eligible-grid">
+          <article><div class="symbol reactor">R</div><h3>PFR</h3><p>Plug Flow Reactor</p></article>
+          <article><div class="symbol reactor">R</div><h3>CSTR</h3><p>Continuous Stirred-Tank Reactor</p></article>
+          <article><div class="symbol column">D</div><h3>Distillation</h3><p>Distillation Column</p></article>
+          <article><div class="symbol column">A</div><h3>Absorption</h3><p>Absorption Column</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="workflow">
+      <div class="container section-head centered reveal">
+        <div class="section-label">03 / HACKATHON WORKFLOW</div>
+        <h2>Five stages. One integrated model.</h2>
+        <p>Each stage produces evidence that feeds directly into the next.</p>
+      </div>
+
+      <div class="container steps reveal">
+        <article class="step-card">
+          <div class="step-top"><span>STEP 01</span><b>SIMULATE</b></div>
+          <div class="step-icon">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M14 60h52M20 60V24h15v36M45 60V14h15v46M25 35h5M50 26h5M50 37h5"/></svg>
+          </div>
+          <h3>Develop the DWSIM flowsheet</h3>
+          <p>Create a complete process containing, at minimum, a reactor, a separation column and a heat exchanger.</p>
+          <ul>
+            <li>PFR or CSTR</li>
+            <li>Distillation or absorption column</li>
+            <li>Heat exchanger</li>
+            <li>Appropriate thermodynamic model</li>
+          </ul>
+        </article>
+
+        <article class="step-card">
+          <div class="step-top"><span>STEP 02</span><b>GENERATE</b></div>
+          <div class="step-icon">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M15 58V22M15 58h52M24 50l10-12 10 7 13-20M57 25v11M57 25H46"/></svg>
+          </div>
+          <h3>Generate process data</h3>
+          <p>Select meaningful variables, define physically realistic ranges and generate the dataset from the rigorous simulator.</p>
+          <ul>
+            <li>Input/output identification</li>
+            <li>Operating-range design</li>
+            <li>Automated DWSIM runs</li>
+            <li>Dataset quality checks</li>
+          </ul>
+        </article>
+
+        <article class="step-card">
+          <div class="step-top"><span>STEP 03</span><b>SUBMIT</b></div>
+          <div class="step-icon">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 16v31M29 28l11-12 11 12M20 48v14h40V48"/><path d="M27 55h26"/></svg>
+          </div>
+          <h3>Submit the ML surrogate model</h3>
+          <p>Develop the ML surrogate for the one unit operation you intend to replace in the final hybrid flowsheet, validate it, and submit it as a standalone model.</p>
+          <ul>
+            <li>Select one eligible unit</li>
+            <li>Model training & tuning</li>
+            <li>Validate against the DWSIM unit</li>
+            <li>Submit model, code & results</li>
+          </ul>
+        </article>
+
+        <article class="step-card active">
+          <div class="step-top"><span>STEP 04</span><b>HYBRIDIZE</b></div>
+          <div class="step-icon">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><rect x="23" y="23" width="34" height="34" rx="4"/><path d="M30 15v8M40 15v8M50 15v8M30 57v8M40 57v8M50 57v8M15 30h8M15 40h8M15 50h8M57 30h8M57 40h8M57 50h8M32 45l6-10 8 10"/></svg>
+          </div>
+          <h3>Build the hybrid flowsheet</h3>
+          <p>Replace the selected rigorous DWSIM unit with your submitted ML surrogate while keeping the remaining process units in DWSIM.</p>
+          <ul>
+            <li>Replace only the selected unit</li>
+            <li>Integrate DWSIM + ML</li>
+            <li>Reconnect process streams</li>
+            <li>Compare rigorous vs hybrid flowsheet</li>
+          </ul>
+        </article>
+
+        <article class="step-card">
+          <div class="step-top"><span>STEP 05</span><b>PRESENT</b></div>
+          <div class="step-icon">
+            <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M16 18h48v34H16zM25 61h30M40 52v9M26 43V31M39 43V24M52 43V35"/></svg>
+          </div>
+          <h3>Present & defend</h3>
+          <p>Tell the engineering story: what you built, why you chose the ML unit, how well it works and where it fails.</p>
+          <ul>
+            <li>Technical presentation</li>
+            <li>Accuracy & speed comparison</li>
+            <li>Engineering interpretation</li>
+            <li>Technical viva / live challenge</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section validation-section">
+      <div class="container validation-grid">
+        <div class="validation-visual reveal">
+          <div class="metric-panel">
+            <div class="panel-heading"><span>FULL DWSIM</span><span>HYBRID</span></div>
+            <div class="metric-row"><span>Product purity</span><strong>0.964</strong><strong>0.958</strong><em>0.62%</em></div>
+            <div class="metric-row"><span>Outlet temperature</span><strong>412.4 K</strong><strong>414.1 K</strong><em>0.41%</em></div>
+            <div class="metric-row"><span>Product flow</span><strong>103.2</strong><strong>101.9</strong><em>1.26%</em></div>
+            <div class="speed-row">
+              <div><small>RIGOROUS</small><span class="bar bar-a"></span><strong>8.4 s</strong></div>
+              <div><small>HYBRID</small><span class="bar bar-b"></span><strong>1.7 s</strong></div>
+            </div>
+            <div class="speed-badge">Illustrative comparison • teams must report their own results</div>
+          </div>
+        </div>
+        <div class="validation-copy reveal">
+          <div class="section-label">04 / VALIDATE WHAT MATTERS</div>
+          <h2>Accuracy is necessary.<br /><span>Engineering validity is mandatory.</span></h2>
+          <p>The hybrid model should be tested against unseen operating points and compared directly with the original rigorous DWSIM flowsheet.</p>
+          <div class="check-grid">
+            <div><i>✓</i><span><strong>Prediction quality</strong>RMSE, MAE, R², parity plots</span></div>
+            <div><i>✓</i><span><strong>Physical consistency</strong>Mass balance, bounds, realistic trends</span></div>
+            <div><i>✓</i><span><strong>Generalization</strong>Unseen operating conditions</span></div>
+            <div><i>✓</i><span><strong>Computational benefit</strong>Speed / convergence comparison</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="evaluation">
+      <div class="container section-head reveal">
+        <div class="section-label">05 / EVALUATION</div>
+        <h2>Build it. Prove it. Understand it.</h2>
+        <p class="max-copy">A strong submission is not simply the model with the highest R². Judges should be able to see sound chemical engineering, a defensible dataset, a robust ML model and genuine ownership of the work.</p>
+      </div>
+      <div class="container scoring-grid reveal">
+        <div class="score-card"><span class="score">25</span><div><h3>Hybrid model performance</h3><p>Accuracy, generalization, robustness and integration.</p></div></div>
+        <div class="score-card"><span class="score">20</span><div><h3>Chemical engineering</h3><p>Flowsheet quality, thermodynamics and physical consistency.</p></div></div>
+        <div class="score-card"><span class="score">15</span><div><h3>Dataset & methodology</h3><p>Variable selection, operating ranges and data-generation design.</p></div></div>
+        <div class="score-card"><span class="score">15</span><div><h3>Technical viva</h3><p>Ability to explain the process, code, assumptions and results.</p></div></div>
+        <div class="score-card"><span class="score">15</span><div><h3>Live modification</h3><p>Ability to adapt the submitted work under a new requirement.</p></div></div>
+        <div class="score-card"><span class="score">10</span><div><h3>Presentation & innovation</h3><p>Clarity, novelty, reproducibility and industrial relevance.</p></div></div>
+      </div>
+      <p class="draft-note container">Draft scoring framework — weights can be revised before launch.</p>
+    </section>
+
+    <section class="section ai-section">
+      <div class="container ai-grid reveal">
+        <div>
+          <div class="section-label light">06 / AI TOOL POLICY</div>
+          <h2>Use AI as a tool.<br />Own the engineering.</h2>
+        </div>
+        <div class="ai-policy">
+          <p>Participants may use modern AI assistants for learning, debugging and development support. The submitted work, however, must be understood and defended by the team.</p>
+          <div class="policy-row"><span>01</span><div><strong>Declare</strong><p>Disclose the AI tools used and broadly how they supported the project.</p></div></div>
+          <div class="policy-row"><span>02</span><div><strong>Reproduce</strong><p>The submitted code, data generation and results must be reproducible.</p></div></div>
+          <div class="policy-row"><span>03</span><div><strong>Defend</strong><p>Teams may be asked to explain or modify any part of their own submission.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="timeline">
+      <div class="container section-head centered reveal">
+        <div class="section-label">07 / TIMELINE</div>
+        <h2>From flowsheet to hybrid simulator.</h2>
+        <p>Dates below are intentionally left open until the event calendar is finalized.</p>
+      </div>
+      <div class="container timeline reveal">
+        <div class="timeline-line"></div>
+        <article><div class="timeline-dot"></div><span>PHASE 01</span><h3>Registration Opens</h3><p>Date to be announced</p></article>
+        <article><div class="timeline-dot"></div><span>PHASE 02</span><h3>Challenge Begins</h3><p>Date to be announced</p></article>
+        <article><div class="timeline-dot"></div><span>PHASE 03</span><h3>Final Submission</h3><p>Date to be announced</p></article>
+        <article><div class="timeline-dot"></div><span>PHASE 04</span><h3>Finale & Awards</h3><p>Date to be announced</p></article>
+      </div>
+    </section>
+
+    <section class="section participation-section">
+      <div class="container participation-grid">
+        <div class="reveal">
+          <div class="section-label">08 / WHO CAN PARTICIPATE?</div>
+          <h2>Built for students who speak both <span>process</span> and <span>data.</span></h2>
+        </div>
+        <div class="participant-cards reveal">
+          <div><span>UG</span><strong>Undergraduate students</strong><p>Chemical engineering and allied disciplines</p></div>
+          <div><span>PG</span><strong>Postgraduate students</strong><p>Process systems, simulation, data science and related areas</p></div>
+          <div><span>TEAM</span><strong>Interdisciplinary teams</strong><p>ChemE + programming / AI collaboration encouraged</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light faq-section" id="faq">
+      <div class="container faq-layout">
+        <div class="faq-intro reveal">
+          <div class="section-label">09 / FAQ</div>
+          <h2>Questions,<br />answered.</h2>
+          <p>Initial FAQ content for the event page. Final eligibility, dates and submission rules can be added before launch.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details open>
+            <summary>What exactly is the “hybrid model” in ML4ChemE?<span>+</span></summary>
+            <p>A complete DWSIM flowsheet in which one eligible rigorous unit operation is replaced by a trained ML model, while the remaining units continue to operate in DWSIM.</p>
+          </details>
+          <details>
+            <summary>Which unit operations can be replaced by ML?<span>+</span></summary>
+            <p>Participants may replace either a PFR, CSTR, distillation column or absorption column, subject to the final challenge rules.</p>
+          </details>
+          <details>
+            <summary>Can teams use ChatGPT, Claude, Copilot or similar AI tools?<span>+</span></summary>
+            <p>Yes, subject to the event's AI-use declaration policy. Teams must understand, reproduce and defend all submitted work.</p>
+          </details>
+          <details>
+            <summary>Does the complete process need to be built in DWSIM first?<span>+</span></summary>
+            <p>Yes. The rigorous DWSIM flowsheet serves as the reference process model and as the source of training and validation data for the ML unit.</p>
+          </details>
+          <details>
+            <summary>What will teams submit?<span>+</span></summary>
+            <p>The final list can include the DWSIM flowsheet, generated dataset, source code, trained ML model, validation results, technical report / README and presentation.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="register-section" id="register">
+      <div class="container register-panel reveal">
+        <div class="register-glow"></div>
+        <div>
+          <span class="register-label">ML4ChemE</span>
+          <h2>Ready to rethink<br />process simulation?</h2>
+          <p>Build the physics. Learn the process. Create the hybrid.</p>
+        </div>
+        <div class="register-action">
+          <a href="#" class="btn btn-primary disabled" aria-disabled="true">Registration Opening Soon</a>
+          <small>Registration link will appear here after launch.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <strong>ML4ChemE</strong>
+        <span>Machine Learning Meets Chemical Process Simulation</span>
+      </div>
+      <div>
+        <small>ORGANIZED BY</small>
+        <strong>FOSSEE, IIT Bombay</strong>
+      </div>
+      <div>
+        <small>CONTACT</small>
+        <span>Email to be announced</span>
+      </div>
+      <div class="footer-top"><a href="#top">Back to top ↑</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 ML4ChemE. Draft event website.</span>
+      <span>Simulate smarter. Predict faster.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
