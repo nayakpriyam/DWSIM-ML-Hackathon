@@ -472,12 +472,12 @@ h2 span { color: #438b80; }
 .mini-node { min-height:112px; border:1px solid rgba(255,255,255,.09); border-radius:12px; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:14px; background:rgba(5,24,20,.34); min-width:0; position:relative; }
 .mini-node b { font-size:16px; line-height:1.2; color:#e8f0ee; }
 .mini-node small { color:#84a098; font-size:10px; letter-spacing:.08em; margin-top:6px; line-height:1.4; }
-.focus-rigorous { border-color:rgba(93,231,215,.42); background:rgba(93,231,215,.055); box-shadow:inset 0 0 24px rgba(93,231,215,.055); }
-.focus-rigorous mark { position:absolute; right:7px; top:7px; background:rgba(93,231,215,.09); color:var(--teal); border:1px solid rgba(93,231,215,.18); border-radius:999px; padding:4px 6px; font-size:8px; font-weight:900; letter-spacing:.07em; }
-.ml-replacement { background:linear-gradient(150deg,rgba(184,240,74,.96),rgba(93,231,215,.88)); border:0; color:var(--ink); box-shadow:0 15px 36px rgba(93,231,215,.09); }
+.focus-rigorous { border-color:rgba(93,231,215,.42); background:rgba(93,231,215,.055); box-shadow:inset 0 0 24px rgba(93,231,215,.055); padding-top:48px; }
+.focus-rigorous mark { position:absolute; left:50%; right:auto; transform:translateX(-50%); top:10px; background:rgba(93,231,215,.09); color:var(--teal); border:1px solid rgba(93,231,215,.18); border-radius:999px; padding:5px 8px; font-size:8px; line-height:1; font-weight:900; letter-spacing:.07em; white-space:nowrap; }
+.ml-replacement { background:linear-gradient(150deg,rgba(184,240,74,.96),rgba(93,231,215,.88)); border:0; color:var(--ink); box-shadow:0 15px 36px rgba(93,231,215,.09); padding-top:48px; }
 .ml-replacement b { color:var(--ink); }
 .ml-replacement small { color:rgba(7,21,19,.60); font-weight:800; }
-.ml-replacement mark { position:absolute; right:8px; top:8px; background:rgba(7,21,19,.11); color:rgba(7,21,19,.72); border:1px solid rgba(7,21,19,.13); border-radius:999px; padding:4px 6px; font-size:8px; font-weight:900; letter-spacing:.08em; }
+.ml-replacement mark { position:absolute; left:50%; right:auto; transform:translateX(-50%); top:10px; background:rgba(7,21,19,.11); color:rgba(7,21,19,.72); border:1px solid rgba(7,21,19,.13); border-radius:999px; padding:5px 8px; font-size:8px; line-height:1; font-weight:900; letter-spacing:.08em; white-space:nowrap; }
 .product-node { min-height:82px; }
 
 .story-transform { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#75928a; padding:14px 0; }
