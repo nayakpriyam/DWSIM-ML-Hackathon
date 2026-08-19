@@ -1,44 +1,59 @@
-# ML4ChemE Website — v1
+# ML4ChemE Website
 
-A responsive static event landing page for:
+This repository contains the static website for **ML4ChemE — Machine Learning Meets Chemical Process Simulation**, a FOSSEE, IIT Bombay hackathon focused on combining DWSIM-based chemical process simulation with machine-learning surrogate models.
 
-**ML4ChemE — Machine Learning Meets Chemical Process Simulation**  
-**Tagline:** Simulate smarter. Predict faster.
+The website is built using plain HTML, CSS and JavaScript, so no framework or build step is required.
 
-## Files
-- `index.html` — page content and sections
-- `styles.css` — all visual styling and responsive layouts
-- `script.js` — mobile navigation, sticky-header state, reveal animations
+## Website Files
 
-## Items intentionally left as placeholders
-Search `index.html` for these phrases and replace them once finalized:
-- `Online / Hybrid`
-- `Opening Soon`
-- `To be announced`
-- `Registration Opening Soon`
-- `Email to be announced`
-- `Draft scoring framework`
+- `index.html` — main webpage content and page sections
+- `styles.css` — layout, colors, typography and responsive styling
+- `script.js` — navigation and interactive page behaviour
+- `assets/` — IIT Bombay, FOSSEE and DWSIM logos used by the website
 
-## Suggested final information to add
-1. Event dates and duration
-2. Eligibility and maximum team size
-3. Registration form URL
-4. Registration fee (if any)
-5. Prizes / certificates
-6. Submission deliverables
-7. Contact email
-8. Mentor/support session information
-9. Final AI-use policy
-10. Final judging weights
+## View the Website Locally
 
-## Run locally
-Open `index.html` in a browser, or serve the folder with any static web server.
+### Option 1 — Open directly in a browser
 
-Example:
+1. Extract the ZIP file.
+2. Open the extracted `DWSIM-ML-Hackathon` folder.
+3. Double-click `index.html`.
+4. The webpage will open in your default web browser.
+
+This is sufficient for quickly viewing the website.
+
+### Option 2 — Run a local web server using Python
+
+Running through a local web server is recommended while editing the website.
+
+1. Open a terminal or command prompt inside the `DWSIM-ML-Hackathon` folder.
+2. Run:
+
 ```bash
 python -m http.server 8000
 ```
-Then visit `http://localhost:8000`.
 
-## Deployment
-This folder can be deployed directly to GitHub Pages, Netlify, Vercel static hosting, or a conventional web server.
+3. Open a browser and visit:
+
+```text
+http://localhost:8000
+```
+
+4. To stop the local server, return to the terminal and press `Ctrl + C`.
+
+If `python` is not recognised on Windows, try:
+
+```bash
+py -m http.server 8000
+```
+
+## Editing the Website
+
+The folder can be opened in any code editor such as Visual Studio Code.
+
+- Edit `index.html` to change text, sections, links or page content.
+- Edit `styles.css` to change the visual design, spacing, fonts or responsive behaviour.
+- Edit `script.js` to change interactive behaviour.
+- Keep the `assets` folder in the same relative location so the logos continue to load correctly.
+
+After making changes, refresh the browser to view them.
