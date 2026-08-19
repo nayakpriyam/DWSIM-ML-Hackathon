@@ -198,61 +198,115 @@
     </section>
 
     <section class="section section-ink" id="challenge">
-      <div class="container challenge-layout">
-        <div class="challenge-copy reveal">
-          <div class="section-label light">02 / THE CHALLENGE</div>
-          <h2>Build the full process.<br />Then teach <span>one unit</span> to think faster.</h2>
-          <p>
-            Every team begins with a complete DWSIM process. The final submission must remain a functioning flowsheet, except one eligible unit operation is replaced by a trained machine-learning model.
-          </p>
-          <div class="challenge-rule">
-            <span class="rule-icon">→</span>
-            <div>
-              <strong>Core requirement</strong>
-              <p>The ML model must receive relevant process inputs and return outputs required by downstream DWSIM units.</p>
+      <div class="container challenge-intro reveal">
+        <div class="section-label light">02 / THE CHALLENGE</div>
+        <div class="challenge-intro-grid">
+          <h2>Build it rigorously.<br />Replace <span>one unit</span> intelligently.</h2>
+          <div class="challenge-lead">
+            <p>
+              Start with a complete DWSIM flowsheet. Choose one eligible reactor or separation unit, generate data from its rigorous DWSIM model, build a surrogate in Python, and then place that ML model back into the flowsheet while every other unit continues to run in DWSIM.
+            </p>
+            <div class="challenge-summary-chips">
+              <span><b>BEFORE</b> 100% DWSIM</span>
+              <span><b>AFTER</b> 1 ML unit + remaining DWSIM</span>
+              <span><b>GOAL</b> Accurate + faster hybrid simulation</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="hybrid-map reveal">
-          <div class="flow-node">
-            <span class="node-num">01</span>
-            <strong>Feed + HX</strong>
-            <small>DWSIM</small>
+      <div class="container challenge-story reveal" aria-label="How the hybrid process model is created">
+        <article class="story-panel baseline-panel">
+          <div class="story-panel-head">
+            <div><span class="story-step">01</span><strong>Baseline flowsheet</strong></div>
+            <em>FULL DWSIM</em>
           </div>
-          <div class="flow-link"><span></span><b>process stream</b></div>
-          <div class="flow-node selected">
-            <span class="node-num">02</span>
-            <strong>Selected Unit</strong>
-            <small>ML MODEL</small>
-            <em>REPLACED</em>
+          <p class="story-caption">Build and validate the complete process first. This rigorous model becomes the reference case and the source of training data.</p>
+          <div class="mini-flow generic-flow">
+            <span class="flow-terminal">Feed</span>
+            <i>→</i>
+            <div class="mini-node"><b>Unit 1</b><small>DWSIM</small></div>
+            <i>→</i>
+            <div class="mini-node focus-rigorous"><b>Unit 2</b><small>DWSIM</small><mark>SELECTED</mark></div>
+            <i>→</i>
+            <div class="mini-node"><b>Unit 3</b><small>DWSIM</small></div>
+            <i>→</i>
+            <div class="mini-node"><b>Unit 4</b><small>DWSIM</small></div>
+            <i>→</i>
+            <span class="flow-terminal">Product</span>
           </div>
-          <div class="flow-link"><span></span><b>predicted stream</b></div>
-          <div class="flow-node">
-            <span class="node-num">03</span>
-            <strong>Separation</strong>
-            <small>DWSIM</small>
+        </article>
+
+        <div class="story-transform">
+          <div class="transform-icon">ML</div>
+          <strong>Learn the selected unit</strong>
+          <span>DWSIM-generated data</span>
+          <i>↓</i>
+          <span>Python ML surrogate</span>
+        </div>
+
+        <article class="story-panel hybrid-panel">
+          <div class="story-panel-head">
+            <div><span class="story-step">02</span><strong>Hybrid flowsheet</strong></div>
+            <em>FINAL MODEL</em>
           </div>
-          <div class="flow-link"><span></span><b>product stream</b></div>
-          <div class="flow-node output">
-            <span class="node-num">04</span>
-            <strong>Product</strong>
-            <small>VALIDATE</small>
+          <p class="story-caption">Replace only the selected unit with the trained Python surrogate. The remaining flowsheet must still operate as rigorous DWSIM models.</p>
+          <div class="mini-flow generic-flow">
+            <span class="flow-terminal">Feed</span>
+            <i>→</i>
+            <div class="mini-node"><b>Unit 1</b><small>DWSIM</small></div>
+            <i>→</i>
+            <div class="mini-node ml-replacement"><b>Unit 2</b><small>ML USING PYTHON</small><mark>REPLACED</mark></div>
+            <i>→</i>
+            <div class="mini-node"><b>Unit 3</b><small>DWSIM</small></div>
+            <i>→</i>
+            <div class="mini-node"><b>Unit 4</b><small>DWSIM</small></div>
+            <i>→</i>
+            <span class="flow-terminal">Product</span>
           </div>
+        </article>
+      </div>
+
+      <div class="container surrogate-requirements reveal">
+        <div class="requirements-title">
+          <span>What must the ML surrogate do?</span>
+          <small>The ML model is not a standalone prediction exercise — it must function as a unit operation inside the process.</small>
+        </div>
+        <div class="requirements-grid">
+          <article><span>01</span><strong>Receive process inputs</strong><p>Use the relevant inlet-stream and operating variables required by the selected unit.</p></article>
+          <article><span>02</span><strong>Predict usable outputs</strong><p>Return the outlet variables needed by the downstream DWSIM unit operations.</p></article>
+          <article><span>03</span><strong>Integrate with DWSIM</strong><p>The predicted values must be passed back into the flowsheet so the remaining process can continue to solve.</p></article>
+          <article><span>04</span><strong>Match the rigorous model</strong><p>Validate the surrogate and the final hybrid flowsheet against unseen full-DWSIM cases.</p></article>
         </div>
       </div>
 
       <div class="container eligible-wrap reveal">
         <div class="eligible-heading">
-          <span>Eligible units for ML replacement</span>
-          <small>Choose any one</small>
+          <div>
+            <span>Eligible units for ML replacement</span>
+            <p>Choose any one unit from your original DWSIM flowsheet.</p>
+          </div>
+          <small>ONE UNIT ONLY</small>
         </div>
-        <div class="eligible-grid">
-          <article><div class="symbol reactor">R</div><h3>PFR</h3><p>Plug Flow Reactor</p></article>
-          <article><div class="symbol reactor">R</div><h3>CSTR</h3><p>Continuous Stirred-Tank Reactor</p></article>
-          <article><div class="symbol column">D</div><h3>Distillation</h3><p>Distillation Column</p></article>
-          <article><div class="symbol column">A</div><h3>Absorption</h3><p>Absorption Column</p></article>
+        <div class="eligible-grid challenge-eligible-grid">
+          <article>
+            <div class="symbol reactor">R</div>
+            <div><h3>PFR</h3><p>Plug Flow Reactor</p><small>Example ML task: inlet conditions + operating variables → outlet state / conversion / composition</small></div>
+          </article>
+          <article>
+            <div class="symbol reactor">R</div>
+            <div><h3>CSTR</h3><p>Continuous Stirred-Tank Reactor</p><small>Example ML task: feed + operating conditions → reactor outlet state / conversion / composition</small></div>
+          </article>
+          <article>
+            <div class="symbol column">D</div>
+            <div><h3>Distillation</h3><p>Distillation Column</p><small>Example ML task: feed + column specifications → top/bottom flowrates, compositions or duties</small></div>
+          </article>
+          <article>
+            <div class="symbol column">A</div>
+            <div><h3>Absorption</h3><p>Absorption Column</p><small>Example ML task: gas/liquid feeds + operating conditions → outlet streams / compositions</small></div>
+          </article>
         </div>
+        <p class="eligible-note">The exact ML inputs and outputs should be selected based on the chosen process, unit specifications and the variables required to reconnect the surrogate to the DWSIM flowsheet.</p>
       </div>
     </section>
 
