@@ -37,3 +37,49 @@ document.querySelectorAll('a[href="#top"]').forEach(link => {
     if (history.replaceState) history.replaceState(null, '', '#top');
   });
 });
+
+// ML4ChemE hero wordmark — styled to match the promotional identity.
+const heroKicker = document.querySelector('.hero-kicker');
+if (heroKicker) {
+  heroKicker.classList.add('ml4cheme-wordmark');
+  heroKicker.setAttribute('aria-label', 'ML4ChemE');
+  heroKicker.innerHTML = '<span class="wordmark-ml">ML</span><span class="wordmark-4">4</span><span class="wordmark-cheme">ChemE</span>';
+
+  const wordmarkStyle = document.createElement('style');
+  wordmarkStyle.textContent = `
+    .hero-kicker.ml4cheme-wordmark {
+      display: inline-flex;
+      align-items: baseline;
+      width: auto;
+      white-space: nowrap;
+      letter-spacing: -0.075em;
+    }
+
+    .ml4cheme-wordmark .wordmark-ml,
+    .ml4cheme-wordmark .wordmark-cheme {
+      color: var(--white);
+      display: inline-block;
+    }
+
+    .ml4cheme-wordmark .wordmark-4 {
+      color: var(--lime);
+      display: inline-block;
+      font-size: 1.10em;
+      line-height: .72;
+      margin: 0 .025em 0 .01em;
+      transform: skew(-8deg) scaleY(1.06);
+      transform-origin: center bottom;
+      text-shadow: 0 0 28px rgba(184,240,74,.12);
+    }
+
+    @media (max-width: 600px) {
+      .hero-kicker.ml4cheme-wordmark {
+        letter-spacing: -0.07em;
+      }
+      .ml4cheme-wordmark .wordmark-4 {
+        font-size: 1.08em;
+      }
+    }
+  `;
+  document.head.appendChild(wordmarkStyle);
+}
